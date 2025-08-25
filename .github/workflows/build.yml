@@ -57,3 +57,32 @@ jobs:
           name: myapp-apk
           path: bin/*.apk
 
+name: Android APK (Buildozer Docker)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build with Buildozer in Docker
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/home/user/app" \
+            -w /home/user/app \
+            kivy/buildozer \
+            buildozer android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-apk
+          path: bin/*.apk
