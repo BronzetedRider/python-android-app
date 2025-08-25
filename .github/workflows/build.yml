@@ -19,7 +19,7 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}:/home/user/app" \
             -w /home/user/app \
-            kivy/buildozer \
+            kivy/buildozer:stable \
             buildozer android debug
 
       - name: Upload APK
