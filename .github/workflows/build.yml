@@ -43,14 +43,12 @@ jobs:
           ANDROIDSDK: $HOME/android-sdk
           ANDROIDNDK: $HOME/android-sdk/ndk/23.1.7779620
         run: |
-<<<<<<< HEAD
           export PATH=$ANDROIDSDK/platform-tools:$PATH
-=======
           export PATH=$ANDROIDSDK/platform-tools:$ANDROIDSDK/build-tools/31.0.0:$PATH
           export PATH=$ANDROIDSDK/cmdline-tools/latest/bin:$PATH
           export ANDROID_HOME=$ANDROIDSDK
           export ANDROID_NDK_HOME=$ANDROIDNDK
->>>>>>> f0b745e (Fix: add aidl to PATH)
+          f0b745e (Fix: add aidl to PATH)
           buildozer android debug
 
       - name: Upload APK
